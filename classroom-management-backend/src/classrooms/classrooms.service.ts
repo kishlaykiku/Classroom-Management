@@ -32,4 +32,16 @@ export class ClassroomsService {
     async deleteClassroom(id: string): Promise<Classroom> {
         return this.classroomModel.findByIdAndDelete(id).exec();
     }
+
+    // Assign a teacher to a classroom
+    async assignTeacher(classroomId: string, teacherId: string): Promise<Classroom> {
+        const classroom = await this.classroomModel.findById(classroomId);
+        classroom.teacherId = teacherId;
+        await classroom.save();
+    
+        // Update the teacher's classroom assignment
+        await this.userModel.findByIdAndUpdate(teacherId, { teacherClassroomId: classroomId });
+    
+        return classroom;
+    }
 }

@@ -26,6 +26,14 @@ export class UsersController {
     return this.usersService.updateUser(id, updateUserDto);
   }
 
+  @Put(':teacherId/assign-student')
+  async assignStudentToTeacher(
+    @Param('teacherId') teacherId: string,
+    @Body('studentId') studentId: string
+  ): Promise<User> {
+    return this.usersService.assignStudentToTeacher(teacherId, studentId);
+  }
+
   @Delete(':id')
   async remove(@Param('id') id: string): Promise<User> {
     return this.usersService.deleteUser(id);

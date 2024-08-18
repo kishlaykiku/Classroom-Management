@@ -26,6 +26,14 @@ export class ClassroomsController {
         return this.classroomsService.updateClassroom(id, updateClassroomDto);
     }
 
+    @Put(':id/assign-teacher')
+    async assignTeacher(
+        @Param('id') classroomId: string, 
+        @Body('teacherId') teacherId: string
+    ): Promise<Classroom> {
+        return this.classroomsService.assignTeacher(classroomId, teacherId);
+    }
+
     @Delete(':id')
     async remove(@Param('id') id: string): Promise<Classroom> {
         return this.classroomsService.deleteClassroom(id);

@@ -19,6 +19,12 @@ export class User {
 
     @Prop({ type: String, ref: 'Classroom', default: null }) // Reference to Classroom
     classroomId: string | null;
+
+    @Prop({ type: String, ref: 'Classroom', default: null })
+    teacherClassroomId: string | null; // Classroom assigned to the teacher
+
+    @Prop({ type: [String], ref: 'User', default: [] })
+    students: string[]; // Students assigned to the teacher
 }
 
 export const UserSchema = SchemaFactory.createForClass(User);

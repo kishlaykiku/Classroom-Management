@@ -23,6 +23,11 @@ export class UsersService {
         return this.userModel.findById(id).exec();
     }
 
+    // Find a user by email
+    async findByEmail(email: string): Promise<User> {
+        return this.userModel.findOne({ email }).exec();
+    }
+
     // Update a user by ID
     async updateUser(id: string, userDto: any): Promise<User> {
         return this.userModel.findByIdAndUpdate(id, userDto, { new: true }).exec();
@@ -31,5 +36,14 @@ export class UsersService {
     // Delete a user by ID
     async deleteUser(id: string): Promise<User> {
         return this.userModel.findByIdAndDelete(id).exec();
+    }
+
+    // Assign a student to a teacher
+    async assignStudentToTeacher(teacherId: string, studentId: string): Promise<User> {
+        const teacher = await this.userModel.findById(teacherId);
+        teacher.students.push(studentId);
+        await teacher.save();
+    
+        return teacher;
     }
 }
