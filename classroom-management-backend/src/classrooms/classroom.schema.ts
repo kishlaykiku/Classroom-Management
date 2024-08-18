@@ -19,6 +19,9 @@ export class Classroom {
 
     @Prop({ type: String, ref: 'User', default: null }) // Reference to Teacher
     teacherId: string | null;
+
+    @Prop({ type: [String], ref: 'User', default: [] }) // Reference to Students
+    students: string[];
 }
 
 export const ClassroomSchema = SchemaFactory.createForClass(Classroom);
