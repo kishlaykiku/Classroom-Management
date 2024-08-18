@@ -2,10 +2,12 @@ import { Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
 import { Classroom, ClassroomDocument } from './classroom.schema';
+import { User, UserDocument } from '../users/user.schema';
 
 @Injectable()
 export class ClassroomsService {
-    constructor(@InjectModel(Classroom.name) private classroomModel: Model<ClassroomDocument>) {}
+    constructor(@InjectModel(Classroom.name) private classroomModel: Model<ClassroomDocument>,
+                @InjectModel(User.name) private userModel: Model<UserDocument>) {}
 
     // Create a new classroom
     async createClassroom(createClassroomDto: any): Promise<Classroom> {

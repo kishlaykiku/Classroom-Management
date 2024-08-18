@@ -9,6 +9,8 @@ import { UsersModule } from './users/users.module';
 import { ClassroomsModule } from './classrooms/classrooms.module';
 import { TimetablesModule } from './timetables/timetables.module';
 
+import { AuthModule } from './auth/auth.module';
+
 @Module({
     imports: [
         ConfigModule.forRoot(),
@@ -16,6 +18,7 @@ import { TimetablesModule } from './timetables/timetables.module';
         UsersModule,
         ClassroomsModule,
         TimetablesModule,
+        AuthModule,
     ],
     controllers: [AppController],
     providers: [AppService],
