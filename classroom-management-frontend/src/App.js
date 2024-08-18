@@ -1,13 +1,23 @@
 import React from 'react';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import Login from './pages/Login';
+import Signup from './pages/Signup';
+import PrincipalDashboard from './pages/PrincipalDashboard';
+import TeacherDashboard from './pages/TeacherDashboard';
+import StudentDashboard from './pages/StudentDashboard';
 
-function App() {
-  return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-100">
-      <h1 className="text-3xl font-bold underline text-blue-600">
-        Hello, Tailwind CSS with React!
-      </h1>
-    </div>
-  );
-}
+const App = () => {
+    return (
+        <Router>
+            <Routes>
+                <Route path="/login" element={<Login />} />
+                <Route path="/signup" element={<Signup />} />
+                <Route path="/principal/dashboard" element={<PrincipalDashboard />} />
+                <Route path="/teacher/dashboard" element={<TeacherDashboard />} />
+                <Route path="/student/dashboard" element={<StudentDashboard />} />
+            </Routes>
+        </Router>
+    );
+};
 
 export default App;
